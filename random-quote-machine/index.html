@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Quote Machine</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontawesome/4.6.3/css/font-awesome.min.css">
+  <style>
+    body {
+      background: red;
+    }
+
+    .quote-box {
+      margin: 8% auto auto auto;
+      padding: 40px;
+      background: #fff;
+      width: 500px;
+    }
+
+    .quote-text {
+      text-align: center;
+      font-size: 32px;
+      color: red;
+    }
+
+    .quote-author {
+      text-align: right;
+      padding: 20px 0;
+      color: red;
+      opacity: 0.8;
+    }
+
+    .share {
+      border: #e6e6e6 solid 1px;
+      background: red;
+      padding: 10px;
+      float: left;
+      color: #ffffff;
+    }
+
+    .new-quote {
+      border: #e6e6e6 solid 1px;
+      background: red;
+      padding: 10px;
+      float: right;
+      color: #ffffff;
+    }
+
+    .new-quote:hover {
+      opacity: 0.8;
+    }
+
+    .clearfix {
+      clear: both;
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    footer a {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body translate="no">
+<div class="quote-box">
+  <div class="quote-text">
+    Give me chastity and continence, but not yet.
+  </div>
+  <div class="quote-author">-Saint Augustine</div>
+  <div class="buttons">
+    <a class="share" href="#" title="twitter"><i class="fa fa-twitter"></i></a>
+    <button class="new-quote" id="new-quote">New quote</button>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<footer>
+  made by <a href="https://github.com/OOnnnOO">OOnnnOO</a><br>
+  power by <a href="https://quotesondesign.com/">quotesondesign</a>
+</footer>
+<script src="https://cdn.jsdelivr.net/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  var quoteText = "", quoteAuthor = "";
+  function getQuote() {
+    $.ajax({
+      type: "GET",
+      url: 'https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=',
+      dataType: "JSON",
+      cache: false,
+      success: function (response) {
+        $('.quote-text').html(response[0]["content"]);
+        $('.quote-author').html(response[0]["title"]);
+      }
+    });
+  }
+  $(document).ready(function () {
+    $("#new-quote").on('click', getQuote);
+  })
+</script>
+</body>
+</html>
