@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>获取天气</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .fl {
+      float: left;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      background: #f0cf61;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .detail li {
+
+      width: 200px;
+      border: solid 1px #0c0c0c;
+      margin: 20px;
+      padding: 20px 10px;
+      box-shadow: 2px 2px;
+      background: #ffffff;
+    }
+
+    .tq {
+      text-align: center;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 20px 0;
+
+    }
+
+    .get {
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .getTq {
+      margin: auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="container">
+    <div>（请使用http访问，因为API不支持https 😢）</div>
+    <header>获取深圳当前的天气信息</header>
+    <div class="tq">天气： <span id="tq"></span></div>
+    <div class="detail">
+      <ul class="clearfix">
+        <li class="fl">城市: <span id="city"></span></li>
+        <li class="fl">温度: <span id="wd"></span></li>
+        <li class="fl">风速: <span id="fx"></span></li>
+      </ul>
+      <div class="get">
+        <button class="getTq" id="getTq">刷新</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script>
+  var getUrl = "http://api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=26e15a45239db1d2997e7b938328d36d";
+  //  $("#getTq").click(function () {
+  $.get(getUrl, function (e) {
+    $("#wd").html(e.main.temp + "F");
+    $("#tq").html(e.weather[0].main);
+    $("#fx").html(e.wind.speed);
+    $("#city").html(e.name);
+    console.log(e);
+  });
+  //  });
+</script>
+</body>
+</html>
