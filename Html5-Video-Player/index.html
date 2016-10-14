@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>视频播放器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    header h1 {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .html5Video {
+      position: relative;
+      overflow: hidden;
+      background: #cccccc;
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+
+    .html5Video .controls {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, .55);
+      position: absolute;
+      bottom: 0;
+      display: flex;
+    }
+
+    .html5Video .controls a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .html5Video .controls > * {
+      flex: 1;
+      text-align: center;
+    }
+
+    .html5Video .controls > *:nth-child(1) {
+      /*flex: ;*/
+    }
+
+    .html5Video .controls > *:nth-child(2) {
+      flex: 8;
+    }
+
+    .html5Video .controls > *:nth-child(3) {
+      flex: 2;
+    }
+
+    .html5Video .controls .progress {
+      width: 100%;
+      height: 10px;
+      border-radius: 3px;
+      overflow: hidden;
+      background-color: #555;
+      cursor: pointer;
+      margin: 15px 0;
+      position: relative;
+    }
+
+    /*下载进度*/
+    .progress .loaded {
+      width: 0;
+      height: 100%;
+      background-color: blue;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /*播放进度*/
+    .progress .line {
+      width: 0;
+      height: 100%;
+      background-color: #FFF;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>视频播放器</h1>
+</header>
+<div class="html5Video">
+  <video style="object-fit: fill">
+    <source src="//www.w3school.com.cn/example/html5/mov_bbb.ogg" type="video/ogg">
+    <source src="//www.w3school.com.cn/example/html5/mov_bbb.mp4" type="video/mp4">
+    <source src="https://img.lidong.me/2016/10/rjMQmYMzWCZW.ogg" type="video/ogg">
+    <source src="https://img.lidong.me/2016/10/2UHp6Yu4Km7r.mp4" type="video/mp4">
+
+    <p>你的浏览器不支持video</p>
+  </video>
+  <div class="controls">
+    <!--播放-->
+    <a href="javascript:;" class="playBtn">播放/暂停</a>
+
+    <!--进度条-->
+    <div class="progress">
+      <div class="loaded"></div>
+      <div class="line"></div>
+      <!--<div class="bar"></div>-->
+    </div>
+    <!--时间-->
+    <div class="timer">
+      <span class="current">00:00:00</span>
+      /
+      <span class="total">00:00:00</span>
+    </div>
+    <!--全屏-->
+    <a href="javascript:;" class="expand">全屏</a>
+  </div>
+</div>
+<script type="text/javascript">
+  var video = document.querySelector("video");
+  var isPlay = document.querySelector(".playBtn");
+  var expand = document.querySelector(".expand");
+  var progress = document.querySelector(".progress");
+  var loaded = document.querySelector(".progress > .loaded");
+  var line = document.querySelector(".progress > .line");
+  var currPlayTime = document.querySelector(".timer > .current");
+  var totalTime = document.querySelector(".timer > .total");
+  //时间转换
+  function getFormatTime(time) {
+    var time1 = time || 0;
+
+    var h = parseInt(time1 / 3600), m = parseInt(time1 % 3600 / 60), s = parseInt(time1 % 60);
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
+
+    return h + ":" + m + ":" + s;
+  }
+  // 播放
+  video.oncanplay = function () {
+    totalTime.innerHTML = getFormatTime(this.duration);
+  };
+  // 播放、暂停
+  isPlay.onclick = function () {
+    if (video.paused) {
+      video.play();
+    }
+    else {
+      video.pause();
+
+    }
+  };
+
+  //    播放进度
+  video.ontimeupdate = function () {
+    var currTime = this.currentTime;
+    duration = this.duration;
+    line.style.width = currTime / duration * 100 + "%";
+    currPlayTime.innerHTML = getFormatTime(currTime);
+  };
+
+  progress.onclick = function (e) {
+    video.currentTime = (e.offsetX / this.offsetWidth) * video.duration;
+  };
+
+  //全屏
+  expand.onclick = function () {
+    video.webkitRequestFullScreen();
+  };
+
+</script>
+</body>
+</html>
