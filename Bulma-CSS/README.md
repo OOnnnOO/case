@@ -1,7 +1,5 @@
 # Bulma CSS
 
-[示例代码](./index.html)
-
 [示例页面](https://oonnnoo.github.io/case/Bulma-CSS/index.html)
 
 ### 参考
