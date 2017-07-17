@@ -14,7 +14,10 @@
     [页面](https://oonnnoo.github.io/case/Day-Night-Toggle-button/index.html)
 - 一个html5视频播放器
   - [代码](https://github.com/OOnnnOO/case/tree/master/Html5-Video-Player/index.html) :fork_and_knife:
-  [页面](https://oonnnoo.github.io/case/Html5-Video-Player/index.html)
+    [页面](https://oonnnoo.github.io/case/Html5-Video-Player/index.html)
+- 使用html5定位
+  - [代码](https://github.com/OOnnnOO/case/tree/master/html5-location/index.html) :fork_and_knife:
+    [页面](https://oonnnoo.github.io/case/html5-location/index.html)
 
 ## Demo
 

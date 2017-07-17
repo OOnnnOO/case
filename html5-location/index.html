@@ -23,10 +23,17 @@
         elt.innerHTML = "Geolocation not supported in this browser"
       }
 
+      // 当获取位置信息失败的时候，调用此函数
       function error(e) {
-        elt.innerHTML = "Geolocation error" + e.code + ":" + e.message;
+        // error 对象包含一些数字编码和文本消息
+        // 1.用户不允许分享他/她的位置信息
+        // 2.浏览器无法确认位置
+        // 3.发生超时
+        console.log(e);
+        elt.innerHTML = "Geolocation error " + e.code + " : " + e.message;
       }
 
+      // 当获取位置信息成功的时候，调用此函数
       function success(pos) {
         // 经纬度
         var msg = "时间:" + new Date(pos.timestamp).toLocaleString() + ". <br>" + "你的位置是：精度" +
@@ -35,14 +42,14 @@
           "经度（longitude）" + pos.coords.longitude + ".";
 
         // 海拔信息
-        // if (pos.coords.altitude) {
+        if (pos.coords.altitude) {
         msg += "你的海拔是 " + pos.coords.altitude + "±" + pos.coords.altitudeAccuracy + "米.";
-        // }
+        }
         // 速度
-        // if (pos.coords.speed) {
+        if (pos.coords.speed) {
         msg += "你的速度是 " +
           pos.coords.speed + "m/s, 航向：" + pos.coords.heading + "."
-        // }
+        }
         elt.innerHTML = msg;
 
       }
