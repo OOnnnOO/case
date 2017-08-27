@@ -14,7 +14,10 @@
     [页面](https://oonnnoo.github.io/case/Day-Night-Toggle-button/index.html)
 - 一个html5视频播放器
   - [代码](https://github.com/OOnnnOO/case/tree/master/Html5-Video-Player/index.html) :fork_and_knife:
-  [页面](https://oonnnoo.github.io/case/Html5-Video-Player/index.html)
+    [页面](https://oonnnoo.github.io/case/Html5-Video-Player/index.html)
+- 一个简单的倒计时
+  - [代码](https://github.com/OOnnnOO/case/tree/master/simple-countdown/index.html) :fork_and_knife:
+    [页面](https://oonnnoo.github.io/case/simple-countdown/index.html)
 
 ## Demo
 

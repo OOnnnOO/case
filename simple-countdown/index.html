@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>倒计时</title>
+</head>
+
+<body>
+  <div id="time">
+    <p id="clock">0:0</p>
+    <button type="button" onclick="start()">开始</button>
+    <button type="button" onclick="pause()">暂停</button>
+    <button type="button" onclick="goOn()">继续</button>
+    <button type="button" onclick="stop()">结束</button>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    // 倒计时总秒数
+    var fulltime =120;
+    var time;
+
+    function count() {
+      if (fulltime < 0) {
+        pause();
+        alert("time out");
+
+      } else {
+        $("#clock").html(Math.floor((fulltime / 60)) + ":" + (fulltime % 60))
+        fulltime--;
+      }
+    }
+
+    function start() {
+      time = setInterval('count()', 1000);
+    }
+
+    function pause() {
+      clearInterval(time);
+    }
+
+    function goOn() {
+      time = setInterval("count()", 1000)
+    }
+    function stop() {
+      fulltime = 0
+    }
+
+  </script>
+</body>
+
+</html>
