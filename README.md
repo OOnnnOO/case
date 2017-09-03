@@ -21,9 +21,9 @@
 - 一个简单的倒计时
   - [代码](https://github.com/OOnnnOO/case/tree/master/simple-countdown/index.html) :fork_and_knife:
     [页面](https://oonnnoo.github.io/case/simple-countdown/index.html)
-
-## Demo
-
+- 学习使用fetch api
+  - [代码](https://github.com/OOnnnOO/case/tree/master/fetch-api/index.html) :fork_and_knife:
+    [页面](https://oonnnoo.github.io/case/fetch-api/index.html)
 - Bulma CSS框架学习
   - [代码](https://github.com/OOnnnOO/case/tree/master/Bulma-CSS/index.html) :fork_and_knife:
     [页面](https://oonnnoo.github.io/case/Bulma-CSS/index.html)
