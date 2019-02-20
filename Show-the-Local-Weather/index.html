@@ -71,7 +71,6 @@
 <div class="wrap">
 
   <div class="container">
-    <div>（请使用http访问，因为API不支持https 😢）</div>
     <header>获取深圳当前的天气信息</header>
     <div class="tq">天气： <span id="tq"></span></div>
     <div class="detail">
@@ -88,7 +87,7 @@
 </div>
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script>
-  var getUrl = "http://api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=26e15a45239db1d2997e7b938328d36d";
+  var getUrl = "//api.openweathermap.org/data/2.5/weather?q=shenzhen&appid=26e15a45239db1d2997e7b938328d36d";
   //  $("#getTq").click(function () {
   $.get(getUrl, function (e) {
     $("#wd").html(e.main.temp + "F");
